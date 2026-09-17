@@ -1,0 +1,16 @@
+{
+  "id": "bad_deployment",
+  "name": "Scenario 2: Faulty Release Rollout (v2.0.0)",
+  "category": "deployment",
+  "incident_prompt": "Payment service transactions are failing with 100% 500 Internal Server Error following release.",
+  "ground_truth": {
+    "root_cause": "Application regression introduced in release v2.0.0 of payment-service: unhandled NullPointerException in ChargeHandler during payment processing.",
+    "trigger": "Deployment rollout of payment-service to image version v2.0.0.",
+    "symptoms": [
+      "100% 500 Internal Server Error rate on /charge endpoint immediately following rollout",
+      "Clean pod readiness but application-level fatal exceptions in container logs",
+      "Replicas from v1.0.0 were unaffected"
+    ],
+    "required_sources": ["Kubernetes", "Logs", "Config"]
+  }
+}

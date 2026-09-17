@@ -1,0 +1,20 @@
+{
+  "id": "multi_source",
+  "name": "Flagship Multi-Source Incident (Rollout + Leak + Pool Exhaustion)",
+  "category": "database_and_deployment",
+  "incident_prompt": "The checkout service suddenly has a high 5xx error rate, probe failures, and restarts.",
+  "ground_truth": {
+    "root_cause": "Deployment checkout:v2.2.0 introduced a persistent database connection leak (unclosed connections in order persistence flow), which combined with a reduced max_pool_size=10 in configmap, exhausted the connection pool, causing connection timeouts, 5xx errors, readiness probe failures, and pod restarts.",
+    "trigger": "Rollout of checkout:v2.2.0 and ConfigMap update pool_size: 10.",
+    "contributing_factors": [
+      "ConfigMap reduced DB connection pool ceiling from 50 to 10",
+      "No circuit breaker or timeout fallback configured for acquire requests"
+    ],
+    "symptoms": [
+      "Active DB connections pegged at maximum pool capacity (10/10)",
+      "Loki logs: 'PoolAcquireTimeoutException: connection pool exhausted'",
+      "Readiness probe failures and kubelet pod restarts"
+    ],
+    "required_sources": ["Kubernetes", "Prometheus", "Loki", "Config"]
+  }
+}

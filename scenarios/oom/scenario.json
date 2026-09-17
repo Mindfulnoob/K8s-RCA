@@ -1,0 +1,16 @@
+{
+  "id": "oom",
+  "name": "Scenario 1: Checkout Service OOMKilled",
+  "category": "resource",
+  "incident_prompt": "The checkout service is experiencing high 5xx error rate and container restarts.",
+  "ground_truth": {
+    "root_cause": "Container memory exhaustion caused by unconstrained memory leak in checkout-service, exceeding 512Mi limit and triggering kernel OOMKilled.",
+    "trigger": "Unbounded cache growth in request handler under moderate load.",
+    "symptoms": [
+      "Pod restarts with exit code 137 (OOMKilled)",
+      "Elevated 503 Service Unavailable errors during pod restart cycles",
+      "Readiness probe failures"
+    ],
+    "required_sources": ["Kubernetes", "Prometheus", "Loki"]
+  }
+}

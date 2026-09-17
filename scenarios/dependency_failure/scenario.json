@@ -1,0 +1,16 @@
+{
+  "id": "dependency_failure",
+  "name": "Scenario 3: PostgreSQL Database Outage",
+  "category": "database",
+  "incident_prompt": "Checkout service experiencing cascading 504 Gateway Timeout errors.",
+  "ground_truth": {
+    "root_cause": "Downstream PostgreSQL database instance crashed and entered CrashLoopBackOff due to corrupted WAL segments, rejecting all socket connections from dependent checkout services.",
+    "trigger": "Underlying database container crash during disk sync.",
+    "symptoms": [
+      "psycopg2.OperationalError: Connection refused on port 5432",
+      "Cascading HTTP 504 Gateway Timeout in checkout service",
+      "Frontend experiencing 502 Bad Gateway"
+    ],
+    "required_sources": ["Kubernetes", "Logs", "Jaeger"]
+  }
+}

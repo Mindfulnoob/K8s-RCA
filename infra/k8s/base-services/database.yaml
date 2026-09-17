@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: database-postgresql
+  namespace: default
+  labels:
+    app: database-postgresql
+spec:
+  serviceName: database-postgresql
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database-postgresql
+  template:
+    metadata:
+      labels:
+        app: database-postgresql
+    spec:
+      containers:
+      - name: postgresql
+        image: postgres:15-alpine
+        env:
+        - name: POSTGRES_DB
+          value: orders
+        - name: POSTGRES_USER
+          value: dbadmin
+        - name: POSTGRES_PASSWORD
+          value: default_insecure_pass
+        ports:
+        - containerPort: 5432
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: database-postgresql
+  namespace: default
+spec:
+  selector:
+    app: database-postgresql
+  ports:
+  - port: 5432
+    targetPort: 5432
