@@ -239,16 +239,16 @@ Complete report written to: evaluation_report.json
 - **Untrusted Telemetry Quarantine**: All logs and event text are treated as potentially hostile and wrapped in immutable security tags.
 - **Automatic Secret Scrubbing**: Recursive sanitization replaces credentials with `[REDACTED_SECRET]`.
 
-See [`docs/security.md`](file:///c:/Users/DELL/Documents/antigravity/fearless-goodall/docs/security.md) for full security specifications.
+See [`docs/security.md`](docs/security.md) for full security specifications.
 
 ---
 
 ## 10. Documentation Index
 
-- [Architecture & System Design](file:///c:/Users/DELL/Documents/antigravity/fearless-goodall/docs/architecture.md)
-- [Security Model & Sandboxing](file:///c:/Users/DELL/Documents/antigravity/fearless-goodall/docs/security.md)
-- [Automated Evaluation Framework](file:///c:/Users/DELL/Documents/antigravity/fearless-goodall/docs/evaluation.md)
-- [Investigation Lifecycle & Replay](file:///c:/Users/DELL/Documents/antigravity/fearless-goodall/docs/investigation.md)
+- [Architecture & System Design](docs/architecture.md)
+- [Security Model & Sandboxing](docs/security.md)
+- [Automated Evaluation Framework](docs/evaluation.md)
+- [Investigation Lifecycle & Replay](docs/investigation.md)
 
 ---
 
