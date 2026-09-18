@@ -1,4 +1,4 @@
-# KubeRCA Agent: Autonomous AI Agent for Kubernetes Root-Cause Analysis
+# K8s-RCA Agent: Autonomous AI Agent for Kubernetes Root-Cause Analysis
 
 > **Inter IIT Tech Meet 15.0 Prepathon — Development Problem Statement**  
 > An autonomous SRE investigation agent that dynamically gathers multi-source Kubernetes evidence, maintains competing hypotheses, performs Bayesian belief updating, constructs causal graphs, and produces actionable Root Cause Analysis (RCA) reports within a strict read-only security sandbox.
