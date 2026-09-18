@@ -1,7 +1,6 @@
 # KubeRCA: Autonomous AI Agent for Kubernetes Root-Cause Analysis
 **Inter IIT Tech Meet 15.0 Prepathon — Development Problem Statement**  
 **Repository:** [https://github.com/Mindfulnoob/KubeRCA](https://github.com/Mindfulnoob/KubeRCA)  
-**Track:** System Engineering & Autonomous SRE Intelligence
 
 ---
 
